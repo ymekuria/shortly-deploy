@@ -7,8 +7,9 @@ module.exports = function(grunt) {
         options: {
           separator: ';',
         },
-        src: ['public/lib/jquery.js','public/lib/underscore.js','public/lib/backbone.js','public/lib/handlebars.js','public/client/app.js','public/client/link.js','public/client/links.js','public/client/linkView.js','public/client/linksView.js','public/client/createLinkView.js','public/client/router.js'],
-        dest: 'dist/allScripts.js'
+        // 'public/client/app.js','public/client/link.js','public/client/links.js','public/client/linkView.js','public/client/linksView.js','public/client/createLinkView.js','public/client/router.js'
+        src: ['public/client/*.js'],
+        dest: 'public/dist/<%= pkg.name %>.js'
       }
     },
 
@@ -30,7 +31,7 @@ module.exports = function(grunt) {
     uglify: {
       target: {
         files: {
-          'dist/allScripts.min.js': ['dist/allScripts.js']
+          'public/dist/<%= pkg.name %>.min.js': ['public/client/*.js']
         }
       }
       
@@ -105,6 +106,9 @@ module.exports = function(grunt) {
   grunt.registerTask('test', [
     'mochaTest'
   ]);
+  grunt.registerTask('default', [
+    'build'
+    ]);
 
   grunt.registerTask('build', [
     'concat', 'uglify'
