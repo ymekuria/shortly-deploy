@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         options: {
           separator: ';',
         },
-        src: ['lib/jquery.js','lib/underscore.js','lib/backbone.js','lib/handlebars.js','public/client/app.js','public/client/link.js','public/client/links.js','public/client/linkView.js','public/client/linksView.js','public/client/createLinkView.js','public/client/router.js'],
+        src: ['public/lib/jquery.js','public/lib/underscore.js','public/lib/backbone.js','public/lib/handlebars.js','public/client/app.js','public/client/link.js','public/client/links.js','public/client/linkView.js','public/client/linksView.js','public/client/createLinkView.js','public/client/router.js'],
         dest: 'dist/allScripts.js'
       }
     },
@@ -28,8 +28,12 @@ module.exports = function(grunt) {
     },
 
     uglify: {
-
-      //add code
+      target: {
+        files: {
+          'dist/allScripts.min.js': ['dist/allScripts.js']
+        }
+      }
+      
     },
 
     jshint: {
