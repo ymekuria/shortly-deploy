@@ -3,6 +3,13 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
+      dist: {
+        options: {
+          separator: ';',
+        },
+        src: ['lib/jquery.js','lib/underscore.js','lib/backbone.js','lib/handlebars.js','public/client/app.js','public/client/link.js','public/client/links.js','public/client/linkView.js','public/client/linksView.js','public/client/createLinkView.js','public/client/router.js'],
+        dest: 'dist/allScripts.js'
+      }
     },
 
     mochaTest: {
@@ -21,6 +28,8 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+
+      //add code
     },
 
     jshint: {
@@ -94,6 +103,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
+    'concat', 'uglify'
   ]);
 
   grunt.registerTask('upload', function(n) {
